@@ -1,11 +1,11 @@
 {
-  "name": "cinemania",
+  "name": "Cinemania",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/cinemania/",
+    "build": "vite build --base=/Cinemania/",
     "preview": "vite preview"
   },
   "devDependencies": {
