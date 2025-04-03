@@ -2,6 +2,7 @@
   body {
     background-color: black;
     color: aliceblue;
+    font-family: "Roboto", sans-serif;
   }
   .container {
     display: flex;
@@ -9,6 +10,7 @@
     justify-content: center;
     align-items: center;
     height: auto;
+    margin-top: 40px;
   }
 
   .weekly-see {
@@ -19,4 +21,78 @@
     width: 280px;
     margin-bottom: 24px;
   }
+  .see {
+    color: #f87719;
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  .img {
+    position: relative;
+  }
+
+  .movie-card {
+    margin-bottom: 16px;
+   
+  }
+  .info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    transition: opacity 0.3s ease-in-out;
+    gap: 98px;
+  }
+
+  .film-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  /*STARS CSS*/
+  .checked {
+    color: orange;
+  }
+
+  /* .icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+  } */
+
+  /* ==========================================
+Single-colored icons can be modified like so:
+.icon-name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+
+  /* .icon-star-o {
+    width: 0.9287109375em;
+  }
+
+  .icon-star-half {
+    width: 0.4638671875em;
+  }
+
+  .icon-star {
+    width: 0.9287109375em;
+  }
+
+  .icon-text {
+    width: 12.3330078125em;
+  } */
 }
