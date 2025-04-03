@@ -31,10 +31,27 @@
     position: relative;
   }
 
+  .all {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .movie-card {
     margin-bottom: 16px;
-   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
   }
+  
+  .stars {
+    position: absolute;
+    right: 0;
+  }
+
   .info {
     position: absolute;
     bottom: 0;
@@ -60,7 +77,7 @@
 
   /*STARS CSS*/
   .checked {
-    color: orange;
+    color: #f87719;
   }
 
   /* .icon {

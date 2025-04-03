@@ -11,7 +11,7 @@ axios
     let movies = response.data.results;
     if (movies.length > 0) {
       let img = document.querySelector(".img");
-      let filmismi = document.querySelector(".film-ismi");
+
       let movie = movies[0];
       let movieDiv = document.createElement("div");
       movieDiv.classList.add("movie-card");
@@ -19,16 +19,20 @@ axios
         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${
         movie.title
       }" width="280" height="406">
-        <div class="movie-details">
+      <div class="all"
+      >
+      <div class="movie-details">
           <h3>${movie.title}</h3>
-          <p>${movie.genre_ids.join(", ")}</p>
-          <div class="stars">
-            ${getStars(movie.vote_average)}
-          </div>
+          <p>${getGenres(movie.genre_ids).join(", ")}</p>
+          
         </div>
+        <div class="stars">
+            ${getStars(movie.vote_average)}
+          </div></div>
+        
       `;
       img.appendChild(movieDiv);
-      filmismi.innerHTML = `<h2>${movie.title}</h2>`;
+      // filmismi.innerHTML = `<h2>${movie.title}</h2>`;
     }
   });
 
