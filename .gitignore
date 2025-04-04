@@ -1,0 +1,14 @@
+# Node.js
+node_modules/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Diğer log dosyaları
+npm-debug.log
+yarn-error.log
+
+
