@@ -10,13 +10,18 @@
     <header class="site-header">
       <div class="logo">
         <a href="../index.html" class="logo-link">
-          <img src="/src/img/logo.svg" loading="lazy" alt="logo" />
-          <p class="log-text">Cinemania</p>
+          <img
+            src="/src/img/logo.svg"
+            loading="lazy"
+            alt="logo"
+            class="logo-img"
+          />
+          <p class="logo-text">Cinemania</p>
         </a>
       </div>
       <div class="mobile-menu__container" id="mobile-menu__container" data-menu>
         <a href="../index.html" class="logo-link mobile-menu__logo">
-          ><img
+          <img
             loading="lazy"
             src="/src/img/logo.svg"
             alt="logo"
@@ -41,13 +46,15 @@
       </button>
       <div class="header__theme-switcher" id="theme-switcher">
         <svg id="icon-moon">
-          <use href="/src/images/sprite.svg#icon-moon"></use>
+          <use href="/src/img/night-mode.svg"></use>
         </svg>
         <svg id="icon-sun">
-          <use href="/src/images/sprite.svg#icon-sun"></use>
+          <use href="/src/img/sunMod.svg"></use>
         </svg>
       </div>
       <div class="backdrop visually-hidden" data-backdrop></div>
+
+      <script type="module" src="../js/header.js"></script>
     </header>
   </body>
 </html>
