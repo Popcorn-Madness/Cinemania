@@ -16,23 +16,22 @@ axios
       let movieDiv = document.createElement("div");
       movieDiv.classList.add("movie-card");
       movieDiv.innerHTML = `
-        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${
-        movie.title
-      }" width="280" height="406">
-      <div class="all"
-      >
-      <div class="movie-details">
-          <h3>${movie.title}</h3>
-          <p>${getGenres(movie.genre_ids).join(", ")}</p>
-          
+        <div class="image-container">
+            <img src="https://image.tmdb.org/t/p/w500${
+              movie.poster_path
+            }" alt="${movie.title}" width="280" height="406">
         </div>
-        <div class="stars">
-            ${getStars(movie.vote_average)}
-          </div></div>
-        
-      `;
+        <div class="movie-details">
+        <div class="movie-name">
+         <h3>${movie.title}</h3>
+            <p>${getGenres(movie.genre_ids).join(", ")}</p></div>
+           
+            <div class="stars">
+                ${getStars(movie.vote_average)}
+            </div>
+        </div>
+    `;
       img.appendChild(movieDiv);
-      // filmismi.innerHTML = `<h2>${movie.title}</h2>`;
     }
   });
 
@@ -42,6 +41,80 @@ console.log(seeAll);
 seeAll.addEventListener("click", () => {
   let img = document.querySelector(".img");
   img.innerHTML = "";
+
+  let weekly = document.querySelector(".weekly-see");
+
+  weekly.style.display = "none";
+
+  let filmDate = document.createElement("div");
+  filmDate.classList.add("film-date");
+
+  let filmİnput = document.createElement("input");
+  let date = document.createElement("input");
+
+  filmİnput.type = "text";
+  filmİnput.placeholder = "Film Adı";
+  filmİnput.classList.add("film-input");
+  filmİnput.style.width = "173px";
+  filmİnput.style.height = "40px";
+  filmİnput.style.border = "1px solid #FFFFFF";
+  filmİnput.style.borderRadius = "8px";
+  filmİnput.style.marginBottom = "12px";
+  filmİnput.style.padding = "1px";
+  filmİnput.style.backgroundColor = "transparent";
+  filmİnput.style.marginRight = "10px";
+  filmİnput.style.color = "#FFFFFF";
+
+  date.type = "date";
+  date.classList.add("date");
+  date.style.width = "95px";
+  date.style.height = "40px";
+  date.style.border = "1px solid #FFFFFF";
+  date.style.borderRadius = "8px";
+  date.style.marginBottom = "12px";
+  date.style.padding = "1px";
+  date.style.backgroundColor = "transparent";
+  date.style.color = "#FFFFFF";
+
+  date.addEventListener("click", function () {
+    this.showPicker(); // Tarayıcı destekliyorsa, tarih seçici açılır
+  });
+
+  img.appendChild(filmDate);
+  filmDate.appendChild(filmİnput);
+  filmDate.appendChild(date);
+
+  let searchDiv = document.createElement("div");
+  searchDiv.classList.add("search-container");
+
+  let input = document.createElement("input");
+  input.type = "text";
+  input.placeholder = "Search";
+  input.classList.add("search-input");
+  input.style.width = "224px";
+  input.style.height = "40px";
+  input.style.border = "1px solid #FFFFFF";
+  input.style.borderRadius = "8px";
+  input.style.marginBottom = "20px";
+  input.style.padding = "1px";
+  input.style.backgroundColor = "transparent";
+  input.style.color = "#FFFFFF";
+
+  let searchButton = document.createElement("img");
+  searchButton.src = "../img/Icon button.svg";
+  searchButton.alt = "Search Button";
+  searchButton.classList.add("search-button");
+  searchButton.style.width = "40px";
+  searchButton.style.height = "40px";
+  searchButton.style.marginLeft = "10px";
+  searchButton.style.cursor = "pointer";
+  searchButton.style.borderRadius = "8px";
+  searchButton.style.backgroundColor = "transparent";
+  searchButton.style.color = "#FFFFFF";
+
+  img.appendChild(searchDiv);
+  searchDiv.appendChild(input);
+  searchDiv.appendChild(searchButton);
 
   axios
     .get(`${url}/movie/popular?api_key=${apiKey}&language=tr-TR`)
@@ -54,17 +127,21 @@ seeAll.addEventListener("click", () => {
         let movieDiv = document.createElement("div");
         movieDiv.classList.add("movie-card");
         movieDiv.innerHTML = `
-          <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${
-          movie.title
-        }" width="280" height="406">
-          <div class="movie-details">
-            <h3>${movie.title}</h3>
-            <p>${getGenres(movie.genre_ids).join(", ")}</p>
+        <div class="image-container">
+            <img src="https://image.tmdb.org/t/p/w500${
+              movie.poster_path
+            }" alt="${movie.title}" width="280" height="406">
+        </div>
+        <div class="movie-details">
+        <div class="movie-name">
+         <h3>${movie.title}</h3>
+            <p>${getGenres(movie.genre_ids).join(", ")}</p></div>
+           
             <div class="stars">
-              ${getStars(movie.vote_average)}
+                ${getStars(movie.vote_average)}
             </div>
-          </div>
-        `;
+        </div>
+    `;
         img.appendChild(movieDiv);
       });
     })
