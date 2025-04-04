@@ -6,7 +6,7 @@
   padding-bottom: 8px;
   display: flex;
 }
-
+ 
 .logo {
   outline: none;
   text-decoration: none;
@@ -39,7 +39,7 @@
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav-bar {
+.nav-bar .nav-list {
   display: none;
 }
 
@@ -61,7 +61,8 @@
   z-index: 2;
   width: 12px;
   height: 12px;
-  transform: translateX(var(--switcher-pos-mob)); /* Butonun konumunu buradan kontrol ediyoruz */
+  transform: translateX(var(--switcher-pos-mob));
+  /* Butonun konumunu buradan kontrol ediyoruz */
   background-color: rgb(255, 255, 255);
   position: absolute;
   top: 12%;
@@ -93,7 +94,8 @@
   z-index: 2;
   width: 10px;
   height: 10px;
-  transform: translateX(var(--switcher-bow-pos-mob)) rotate(var(--switcher-bow-rotaion)); /* Tema butonunun ok işaretinin konumunu buradan kontrol edebilirsiniz */
+  transform: translateX(var(--switcher-bow-pos-mob)) rotate(var(--switcher-bow-rotaion));
+  /* Tema butonunun ok işaretinin konumunu buradan kontrol edebilirsiniz */
   background-color: rgba(0, 0, 0, 0);
   position: absolute;
   top: 17%;
@@ -198,10 +200,12 @@ button,
 a {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 .dark-theme .mobile-menu__container {
   background-color: #121212;
   /* Arka planı koyu yap */
 }
+
 .dark-theme button {
   background-color: #333;
   color: #fff;
@@ -244,12 +248,16 @@ a {
     margin: 0;
   }
 
+  .logo-link {
+    display: flex;
+  }
+
   .header__menu-button {
     display: none;
   }
 
   .nav-list {
-    display: flex !important;
+    display: flex;
     gap: 32px;
     flex-direction: row;
     list-style: none;
@@ -257,8 +265,11 @@ a {
     margin: 0;
   }
 
+     .nav-list {
+       display: flex !important;
+     }
   .nav-bar {
-    display: flex;
+    display: flex !important;
     justify-content: space-around;
     margin: auto;
     gap: 32px;
@@ -306,7 +317,7 @@ a {
   }
 
   .nav-bar {
-    display: flex;
+    display: flex !important;
   }
 
   .nav-list {

@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 // Tema geçişi işlevini tanımlayalım
 const themeSwitcher = document.getElementById('theme-switcher');
 const body = document.body;
@@ -52,3 +51,5 @@ themeSwitcher.addEventListener('click', () => {
 
 // Sayfa yüklendiğinde tema tercihini uygula
 document.addEventListener('DOMContentLoaded', applyTheme);
+
+
