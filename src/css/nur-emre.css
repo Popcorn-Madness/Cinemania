@@ -30,23 +30,18 @@
   /*İNPUT SEARCH BUTTON CSS*/
 
   .search-container {
-  display: flex; /* Yanyana hizalamak için flexbox kullanıyoruz */
-  align-items: center; /* Dikeyde ortalamak için */
-}
+    display: flex; /* Yanyana hizalamak için flexbox kullanıyoruz */
+    align-items: center; /* Dikeyde ortalamak için */
+  }
 
-.search-input {
-  flex-grow: 1; /* Input alanı genişlesin */
-}
+  .search-input {
+    flex-grow: 1; /* Input alanı genişlesin */
+  }
 
-.search-button {
-  margin-left: 10px;
-  margin-bottom: 15px; /* Buton ile input arasına boşluk bırakmak için */
-}
-
-
-
-
-
+  .search-button {
+    margin-left: 10px;
+    margin-bottom: 15px; /* Buton ile input arasına boşluk bırakmak için */
+  }
 
   .img {
     position: relative;
@@ -79,6 +74,7 @@
     height: auto;
     overflow: hidden;
     margin-bottom: 16px;
+    border-radius: 5px;
   }
   .movie-details {
     position: absolute;
