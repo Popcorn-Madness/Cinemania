@@ -53,7 +53,7 @@ seeAll.addEventListener("click", () => {
   let date = document.createElement("input");
 
   filmİnput.type = "text";
-  filmİnput.placeholder = "Film Adı";
+  filmİnput.placeholder = "Film";
   filmİnput.classList.add("film-input");
   filmİnput.style.width = "173px";
   filmİnput.style.height = "40px";
@@ -65,6 +65,7 @@ seeAll.addEventListener("click", () => {
   filmİnput.style.marginRight = "10px";
   filmİnput.style.color = "#FFFFFF";
 
+  
   date.type = "date";
   date.classList.add("date");
   date.style.width = "95px";
@@ -77,7 +78,7 @@ seeAll.addEventListener("click", () => {
   date.style.color = "#FFFFFF";
 
   date.addEventListener("click", function () {
-    this.showPicker(); // Tarayıcı destekliyorsa, tarih seçici açılır
+  this.showPicker(); 
   });
 
   img.appendChild(filmDate);
