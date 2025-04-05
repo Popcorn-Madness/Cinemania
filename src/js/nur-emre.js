@@ -3,7 +3,7 @@ import axios from "axios";
 let apiKey = "6c6ff1eefb34466f1e524e319f306b8f";
 let url = "https://api.themoviedb.org/3";
 
-// Sayfa yüklendiğinde popüler filmleri al
+// Sayfa yüklendiğinde popüler filmleri al TEK RESİM GÖSTERİR
 axios
   .get(`${url}/movie/popular?api_key=${apiKey}&language=tr-TR`)
   .then((response) => {
@@ -12,7 +12,7 @@ axios
     if (movies.length > 0) {
       let img = document.querySelector(".img");
 
-      let movie = movies[0];
+      let movie = movies[17];
       let movieDiv = document.createElement("div");
       movieDiv.classList.add("movie-card");
       movieDiv.innerHTML = `
@@ -35,7 +35,72 @@ axios
     }
   });
 
-// "See all" butonuna tıklama işlemi
+//2.DİV
+axios
+  .get(`${url}/movie/popular?api_key=${apiKey}&language=tr-TR`)
+  .then((response) => {
+    console.log("Veri:", response.data);
+    let movies = response.data.results;
+    if (movies.length > 0) {
+      let img1 = document.querySelector(".img1");
+
+      let movie = movies[16];
+      let movieDiv = document.createElement("div");
+      movieDiv.classList.add("movie-card");
+      movieDiv.innerHTML = `
+        <div class="image-container">
+            <img src="https://image.tmdb.org/t/p/w500${
+              movie.poster_path
+            }" alt="${movie.title}" width="280" height="406">
+        </div>
+        <div class="movie-details">
+        <div class="movie-name">
+         <h3>${movie.title}</h3>
+            <p>${getGenres(movie.genre_ids).join(", ")}</p></div>
+           
+            <div class="stars">
+                ${getStars(movie.vote_average)}
+            </div>
+        </div>
+    `;
+      img1.appendChild(movieDiv);
+    }
+  });
+
+//3.DİV
+axios
+  .get(`${url}/movie/popular?api_key=${apiKey}&language=tr-TR`)
+  .then((response) => {
+    console.log("Veri:", response.data);
+    let movies = response.data.results;
+    if (movies.length > 0) {
+      let img2 = document.querySelector(".img2");
+
+      let movie = movies[2];
+      let movieDiv = document.createElement("div");
+      movieDiv.classList.add("movie-card");
+      movieDiv.innerHTML = `
+        <div class="image-container">
+            <img src="https://image.tmdb.org/t/p/w500${
+              movie.poster_path
+            }" alt="${movie.title}" width="280" height="406">
+        </div>
+        <div class="movie-details">
+        <div class="movie-name">
+         <h3>${movie.title}</h3>
+            <p>${getGenres(movie.genre_ids).join(", ")}</p></div>
+           
+            <div class="stars">
+                ${getStars(movie.vote_average)}
+            </div>
+        </div>
+    `;
+      img2.appendChild(movieDiv);
+    }
+  });
+
+// "See all" butonuna tıklama işlemi BÜTÜN RESİMLERİ GÖSTERİR
+
 let seeAll = document.querySelector(".see");
 console.log(seeAll);
 seeAll.addEventListener("click", () => {
@@ -50,7 +115,6 @@ seeAll.addEventListener("click", () => {
   filmDate.classList.add("film-date");
 
   let filmİnput = document.createElement("input");
-  let date = document.createElement("input");
 
   filmİnput.type = "text";
   filmİnput.placeholder = "Film";
@@ -65,21 +129,26 @@ seeAll.addEventListener("click", () => {
   filmİnput.style.marginRight = "10px";
   filmİnput.style.color = "#FFFFFF";
 
-  
-  date.type = "date";
+  let date = document.createElement("select");
   date.classList.add("date");
   date.style.width = "95px";
   date.style.height = "40px";
-  date.style.border = "1px solid #FFFFFF";
+  date.style.border = "1px solid #ffffff";
   date.style.borderRadius = "8px";
   date.style.marginBottom = "12px";
   date.style.padding = "1px";
   date.style.backgroundColor = "transparent";
-  date.style.color = "#FFFFFF";
+  date.style.color = "#ffffff";
 
-  date.addEventListener("click", function () {
-  this.showPicker(); 
-  });
+  for (let year = 2023; year >= 2015; year--) {
+    let option = document.createElement("option");
+    option.value = year;
+    option.text = year;
+    if (year === 2019) {
+      option.selected = true;
+    }
+    date.appendChild(option);
+  }
 
   img.appendChild(filmDate);
   filmDate.appendChild(filmİnput);
