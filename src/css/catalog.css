@@ -137,12 +137,14 @@ option {
 
 /* Tablet görünümü (max-width: 768px) */
 @media (min-width: 768px) {
-  .catalog {
+  .movie-card {
     width: auto;
     height: auto;
+    display: flex;
+    flex-wrap: wrap;
   }
 
-  /* .weekly-see {
+  .weekly-see {
     width: 100%;
   }
   .see {
@@ -154,9 +156,15 @@ option {
     height: auto;
   }
 
-  /* .displayDegis {
+  .displayDegis {
     display: block;
-  } */ 
+  }
+
+  .movie-card {
+    width: 224px;
+    height: 325px;
+  }
+
   .movie-card {
     width: 224px;
     height: 325px;
