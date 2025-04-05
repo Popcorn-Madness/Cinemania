@@ -1,11 +1,12 @@
+import axios from "axios";
 
-window.onload = function () {
-    let img = document.querySelector(".img");
-    img.innerHTML = "";
+export function catalogFun() {
+  let apiKey = "6c6ff1eefb34466f1e524e319f306b8f";
+  let url = "https://api.themoviedb.org/3";
 
-    let weekly = document.querySelector(".weekly-see");
-
-    weekly.style.display = "none";
+  window.onload = function () {
+    let catalog = document.querySelector(".catalog");
+    catalog.innerHTML = "";
 
     let filmDate = document.createElement("div");
     filmDate.classList.add("film-date");
@@ -46,7 +47,7 @@ window.onload = function () {
       date.appendChild(option);
     }
 
-    img.appendChild(filmDate);
+    catalog.appendChild(filmDate);
     filmDate.appendChild(filmİnput);
     filmDate.appendChild(date);
 
@@ -78,7 +79,7 @@ window.onload = function () {
     searchButton.style.backgroundColor = "transparent";
     searchButton.style.color = "#FFFFFF";
 
-    img.appendChild(searchDiv);
+    catalog.appendChild(searchDiv);
     searchDiv.appendChild(input);
     searchDiv.appendChild(searchButton);
 
@@ -87,7 +88,7 @@ window.onload = function () {
       .then((response) => {
         console.log("Veri:", response.data);
         let movies = response.data.results;
-        let img = document.querySelector(".img");
+        let catalog = document.querySelector(".catalog");
 
         movies.forEach((movie) => {
           let movieDiv = document.createElement("div");
@@ -108,57 +109,55 @@ window.onload = function () {
             </div>
         </div>
     `;
-          img.appendChild(movieDiv);
+          catalog.appendChild(movieDiv);
         });
       })
       .catch((error) => {
         console.error("Hata:", error);
       });
+  };
 
-    
-
-}
- 
-// Yıldızları oluşturmak için fonksiyon
-function getStars(voteAverage) {
-  let stars = "";
-  let fullStars = Math.floor(voteAverage / 2); // 1-10 arasında olduğu için 2 ile bölüyoruz
-  for (let i = 0; i < 5; i++) {
-    if (i < fullStars) {
-      stars += `<span class="fa fa-star checked"></span>`;
-    } else {
-      stars += `<span class="fa fa-star"></span>`;
+  // Yıldızları oluşturmak için fonksiyon
+  function getStars(voteAverage) {
+    let stars = "";
+    let fullStars = Math.floor(voteAverage / 2); // 1-10 arasında olduğu için 2 ile bölüyoruz
+    for (let i = 0; i < 5; i++) {
+      if (i < fullStars) {
+        stars += `<span class="fa fa-star checked"></span>`;
+      } else {
+        stars += `<span class="fa fa-star"></span>`;
+      }
     }
+    return stars;
   }
-  return stars;
-}
 
-// Türleri almak için (Türler film API'sinde ID ile gelir)
-function getGenres(genreIds) {
-  const genresList = [
-    { id: 28, name: "Aksiyon" },
-    { id: 12, name: "Macera" },
-    { id: 16, name: "Animasyon" },
-    { id: 35, name: "Komedi" },
-    { id: 80, name: "Suç" },
-    { id: 99, name: "Belgesel" },
-    { id: 18, name: "Dram" },
-    { id: 10751, name: "Aile" },
-    { id: 14, name: "Fantastik" },
-    { id: 36, name: "Tarih" },
-    { id: 27, name: "Korku" },
-    { id: 10402, name: "Müzik" },
-    { id: 9648, name: "Gizem" },
-    { id: 10749, name: "Romantik" },
-    { id: 878, name: "Bilim Kurgu" },
-    { id: 10770, name: "Televizyon" },
-    { id: 53, name: "Gerilim" },
-    { id: 10752, name: "Savaş" },
-    { id: 37, name: "Western" },
-  ];
+  // Türleri almak için (Türler film API'sinde ID ile gelir)
+  function getGenres(genreIds) {
+    const genresList = [
+      { id: 28, name: "Aksiyon" },
+      { id: 12, name: "Macera" },
+      { id: 16, name: "Animasyon" },
+      { id: 35, name: "Komedi" },
+      { id: 80, name: "Suç" },
+      { id: 99, name: "Belgesel" },
+      { id: 18, name: "Dram" },
+      { id: 10751, name: "Aile" },
+      { id: 14, name: "Fantastik" },
+      { id: 36, name: "Tarih" },
+      { id: 27, name: "Korku" },
+      { id: 10402, name: "Müzik" },
+      { id: 9648, name: "Gizem" },
+      { id: 10749, name: "Romantik" },
+      { id: 878, name: "Bilim Kurgu" },
+      { id: 10770, name: "Televizyon" },
+      { id: 53, name: "Gerilim" },
+      { id: 10752, name: "Savaş" },
+      { id: 37, name: "Western" },
+    ];
 
-  return genreIds.map((id) => {
-    const genre = genresList.find((g) => g.id === id);
-    return genre ? genre.name : "Bilinmiyor";
-  });
+    return genreIds.map((id) => {
+      const genre = genresList.find((g) => g.id === id);
+      return genre ? genre.name : "Bilinmiyor";
+    });
+  }
 }
