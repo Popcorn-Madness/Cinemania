@@ -2,11 +2,21 @@
 .site-header {
   justify-content: space-between;
   align-items: center;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 8px 20px 8px 20px;
+  height: 48px;
   display: flex;
-}
+  
  
+}
+
+.container {
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .logo {
   outline: none;
   text-decoration: none;
@@ -17,6 +27,7 @@
   display: none;
 }
 
+
 .logo-img {
   width: 32px;
   height: 32px;
@@ -24,11 +35,11 @@
 
 .header__menu-button {
   text-transform: uppercase;
-  /* color: var(--muted-text-clr); */
   background-color: rgba(0, 0, 0, 0);
   font-size: 12px;
   font-weight: 500;
-  line-height: 1.16;
+  line-height: 100%;
+  font-family: "Roboto", sans-serif;
   display: block;
   cursor: pointer;
   border-width: initial;
@@ -37,11 +48,14 @@
   border-image: initial;
   outline: none;
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 auto;
+  width: fit-content;
 }
 
 .nav-bar .nav-list {
   display: none;
 }
+
 
 .header__theme-switcher {
   cursor: pointer;
@@ -54,6 +68,7 @@
   border-radius: 194px;
   gap: 14px;
   padding: 5px;
+  margin-right: 20px;
 }
 
 .header__theme-switcher::before {
@@ -75,6 +90,7 @@
   width: 8px;
   height: 8px;
 }
+
 
 /* Arka plana simge ekleme */
 #icon-moon {
@@ -109,35 +125,50 @@
 }
 
 /* Mobile Menu */
+.header__menu-button {
+  background-color: transparent;
+  /* z-index: 1000; */
+  /* Menü butonunu üstte tutarak tıklanabilir yapıyoruz */
+  position: relative;
+  /* Butonun doğru şekilde yerleşmesi için */
+}
+
 .mobile-menu__container .mobile-menu__logo-img {
   margin-left: 30px;
   margin-bottom: 40px;
+  margin-top: 20px;
 }
 
 .mobile-menu__container {
   position: fixed;
   top: 0;
   right: -100%;
+  /* Menü başlangıçta sağdan gizli */
   width: 250px;
   height: 100vh;
   background: white;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   transition: right 0.3s ease-in-out;
+  z-index: 999;
+  /* Menüye yüksek z-index değeri vererek üstte görünmesini sağlıyoruz */
 }
 
 .mobile-menu__container.open {
   left: 0;
+  /* Sağdan açılmasını sağlıyoruz */
 }
 
 .mobile-menu__container.open .nav-list {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-left: 30px;
 }
 
-.nav-list a {
-  text-decoration: none;
-  color: inherit;
+.mobile-menu__container .nav-list  .nav-list__item a:hover  {
+  color: #f5a623;
+  /* text-decoration: none; */
+  /* color: inherit; */
 }
 
 .nav-bar {
@@ -150,10 +181,11 @@
   list-style: none;
 }
 
-.nav-list a:hover {
-  text-decoration: underline;
+.nav-list__ a:hover {
+  color: #f5a623;
 }
 
+/* Backdrop */
 .backdrop {
   position: fixed;
   top: 0;
@@ -164,6 +196,8 @@
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  z-index: 998;
+  /* Backdrop'u menünün altına yerleştiriyoruz */
 }
 
 .backdrop.show {
@@ -188,14 +222,27 @@ body.dark-theme {
   color: #ffffff;
 }
 
+body.dark-theme .header__menu-button {
+  color: #ffffff;
+  background-color: transparent;
+}
+
+body.dark-theme .header__menu-button:hover {
+  color: #f5a623;
+  background-color: transparent;
+}
+
 .dark-theme .nav-list a {
   color: #ffffff;
 }
 
 .dark-theme .header__theme-switcher {
-  background: linear-gradient(141.22deg, rgb(55, 55, 55) 9.4%, rgba(100, 100, 100, 0.68) 91.91%);
+  background: linear-gradient(141.22deg, rgba(100, 100, 100, 0.68) 91.91%);
 }
-
+body.dark-theme .logo-text {
+  color: #ffffff;
+  /* Beyaz renk */
+}
 button,
 a {
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -207,13 +254,14 @@ a {
 }
 
 .dark-theme button {
-  background-color: #333;
+
   color: #fff;
 }
 
 .dark-theme a {
   color: #f5a623;
 }
+
 
 /* === Tablet (min-width: 768px) === */
 @media screen and (min-width: 768px) {
@@ -237,22 +285,30 @@ a {
   .logo-img {
     width: 48px;
     height: 48px;
+    
   }
 
   .logo-text {
-    display: inline-block;
+    display: flex;
     font-weight: 400;
     font-size: 24px;
     line-height: 1.16;
     align-items: center;
     margin: 0;
+    margin-left: 8px;
+    justify-content: center;
   }
 
   .logo-link {
     display: flex;
   }
+  
 
   .header__menu-button {
+    display: none;
+  }
+
+  .mobile-menu__container {
     display: none;
   }
 
@@ -265,9 +321,13 @@ a {
     margin: 0;
   }
 
-     .nav-list {
-       display: flex !important;
-     }
+  .nav-list {
+    display: flex !important;
+  }
+  .nav-list__item a:hover {
+    color: #f5a623;
+  }
+
   .nav-bar {
     display: flex !important;
     justify-content: space-around;
@@ -277,9 +337,12 @@ a {
     font-size: 14px;
     line-height: 1.14;
     margin-left: 59px;
+    margin: 0 auto;
+    width: fit-content;
   }
 
   .header__theme-switcher {
+
     width: 54px;
     height: 20px;
     margin-left: auto;
@@ -297,6 +360,7 @@ a {
     width: 11px;
     height: 11px;
   }
+ 
 }
 
 /* === Desktop (min-width: 1024px) === */
@@ -318,6 +382,8 @@ a {
 
   .nav-bar {
     display: flex !important;
+    margin: 0 auto;
+      width: fit-content;
   }
 
   .nav-list {
@@ -341,4 +407,5 @@ a {
     width: 13px;
     height: 13px;
   }
+    
 }

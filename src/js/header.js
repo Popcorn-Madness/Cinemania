@@ -2,54 +2,47 @@ document.addEventListener("DOMContentLoaded", function () {
   const menuButton = document.querySelector("[data-menu-open]");
   const menuContainer = document.getElementById("mobile-menu__container");
   const backdrop = document.querySelector("[data-backdrop]");
+  const themeSwitcher = document.getElementById("theme-switcher");
+  const body = document.body;
 
-//   Menü Aç/Kapat İşlevi
+  // Menü Aç/Kapat
   function toggleMenu() {
     const isOpen = menuContainer.classList.contains("open");
-    if (isOpen) {
-      menuContainer.classList.remove("open");
-      backdrop.classList.remove("show");
-    } else {
-      menuContainer.classList.add("open");
-      backdrop.classList.add("show");
-    }
+    menuContainer.classList.toggle("open", !isOpen);
+    backdrop.classList.toggle("show", !isOpen);
   }
 
-//   Menü butonuna tıklanınca aç/kapat
   menuButton.addEventListener("click", toggleMenu);
-
-//   Backdrop'a tıklanınca menüyü kapat
-  backdrop.addEventListener("click", function () {
+  backdrop.addEventListener("click", () => {
     menuContainer.classList.remove("open");
     backdrop.classList.remove("show");
   });
-});
 
-// Tema geçişi işlevini tanımlayalım
-const themeSwitcher = document.getElementById('theme-switcher');
-const body = document.body;
+  // === Tema Geçişi ===
+  function applyTheme() {
+    const currentTheme = localStorage.getItem("theme");
 
-// Kullanıcının tercihini kontrol et ve uygula
-function applyTheme() {
-  const currentTheme = localStorage.getItem('theme');
-  if (currentTheme) {
-    body.classList.add(currentTheme); // Kullanıcının tercihi varsa uygula
+    if (currentTheme === "dark") {
+      body.classList.add("dark-theme");
+    } else {
+      body.classList.remove("dark-theme");
+    }
   }
-}
 
-// Tema değişikliği fonksiyonu
-themeSwitcher.addEventListener('click', () => {
-//   Koyu tema (dark) sınıfını ekle veya kaldır
-  if (body.classList.contains('dark-theme')) {
-    body.classList.remove('dark-theme');
-    localStorage.setItem('theme', 'light-theme'); // Tercihi kaydet
-  } else {
-    body.classList.add('dark-theme');
-    localStorage.setItem('theme', 'dark-theme'); // Tercihi kaydet
+  themeSwitcher.addEventListener("click", () => {
+    const isDark = body.classList.contains("dark-theme");
+    if (isDark) {
+      body.classList.remove("dark-theme");
+      localStorage.setItem("theme", "light");
+    } else {
+      body.classList.add("dark-theme");
+      localStorage.setItem("theme", "dark");
+    }
+  });
+
+  // Başlangıçta koyu tema uygula
+  if (!localStorage.getItem("theme")) {
+    localStorage.setItem("theme", "dark"); // ilk girişte dark başlat
   }
+  applyTheme();
 });
-
-// Sayfa yüklendiğinde tema tercihini uygula
-document.addEventListener('DOMContentLoaded', applyTheme);
-
-
