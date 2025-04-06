@@ -80,6 +80,50 @@ button {
 .checked {
   color: #f87719;
 }
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  margin-top: 48px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  font-size: 20px;
+  color: White;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-button {
+  margin: 0 5px;
+  padding: 10px 15px; /* Yükseklik ve genişliği ayarlayarak yuvarlaklık sağlanır */
+  background-color: transparent;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 50%; /* Tam yuvarlaklık için 50% kullanılır */
+  width: 40px; /* Butonun genişliği */
+  height: 40px; /* Butonun yüksekliği */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #b7b7b7;
+}
+
+.pagination-button:hover {
+  background-color: #ddd;
+}
+
+.pagination-button.active {
+  background-color: #f87719;
+  color: white;
+}
+
 @media (min-width: 768px) {
   .search-container {
     display: flex;
@@ -88,6 +132,18 @@ button {
     justify-content: center;
     margin-right: 50px;
   }
+  
+.no-results {
+  display: flex;
+  flex-direction: column;
+  margin-top: 48px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  font-size: 20px;
+  color: White;
+}
   .catalog {
     display: flex;
     flex-wrap: wrap;
@@ -102,6 +158,8 @@ button {
     height: 44px;
   }
 }
+/*PAGİNATİON BÖLÜMÜ*/
+
 
 @media (min-width: 1280px) {
   .search-container {
@@ -119,8 +177,6 @@ button {
     justify-content: center;
     gap: 16px;
   }
-
- 
 
   #genre-select {
     width: 204px;
