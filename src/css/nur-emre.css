@@ -163,3 +163,41 @@ option {
     height: 325px;
   }
 }
+
+@media (min-width: 1280px) {
+  .container {
+    width: auto;
+    height: auto;
+  }
+  .weekly-trends {
+    font-size: 28px;
+    width: 215px;
+    height: 33px;
+  }
+
+  .weekly-see {
+    width: 100%;
+  }
+  .see {
+    font-size: 24px;
+    width: 84px;
+    height: 33px;
+  }
+  .image-container img {
+    width: 100%;
+  }
+
+  .imgLer {
+    width: 395px;
+    height: 574px;
+  }
+
+  .displayDegis {
+    display: block;
+  }
+
+  .movie-card {
+    width: 395px;
+    height: 574px;
+  }
+}

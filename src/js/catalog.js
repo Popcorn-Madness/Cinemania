@@ -11,84 +11,7 @@ export function catalogFun() {
     let catalog = document.querySelector(".catalog");
     catalog.innerHTML = "";
 
-/************************************************************** */
 
-// let filmDate = document.createElement("div");
-// filmDate.classList.add("film-date");
-
-// let filmİnput = document.createElement("input");
-
-// filmİnput.type = "text";
-// filmİnput.placeholder = "Film";
-// filmİnput.classList.add("film-input");
-// filmİnput.style.width = "173px";
-// filmİnput.style.height = "40px";
-// filmİnput.style.border = "1px solid #FFFFFF";
-// filmİnput.style.borderRadius = "8px";
-// filmİnput.style.marginBottom = "12px";
-// filmİnput.style.padding = "1px";
-// filmİnput.style.backgroundColor = "transparent";
-// filmİnput.style.marginRight = "10px";
-// filmİnput.style.color = "#FFFFFF";
-
-// let date = document.createElement("select");
-// date.classList.add("date");
-// date.style.width = "95px";
-// date.style.height = "40px";
-// date.style.border = "1px solid #ffffff";
-// date.style.borderRadius = "8px";
-// date.style.marginBottom = "12px";
-// date.style.padding = "1px";
-// date.style.backgroundColor = "transparent";
-// date.style.color = "#ffffff";
-
-// for (let year = 2023; year >= 2015; year--) {
-//   let option = document.createElement("option");
-//   option.value = year;
-//   option.text = year;
-//   if (year === 2019) {
-//     option.selected = true;
-//   }
-//   date.appendChild(option);
-// }
-
-// catalog.appendChild(filmDate);
-// filmDate.appendChild(filmİnput);
-// filmDate.appendChild(date);
-
-// let searchDiv = document.createElement("div");
-// searchDiv.classList.add("search-container");
-
-// let input = document.createElement("input");
-// input.type = "text";
-// input.placeholder = "Search";
-// input.classList.add("search-input");
-// input.style.width = "224px";
-// input.style.height = "40px";
-// input.style.border = "1px solid #FFFFFF";
-// input.style.borderRadius = "8px";
-// input.style.marginBottom = "20px";
-// input.style.padding = "1px";
-// input.style.backgroundColor = "transparent";
-// input.style.color = "#FFFFFF";
-
-// let searchButton = document.createElement("img");
-// searchButton.src = "../img/Icon button.svg";
-// searchButton.alt = "Search Button";
-// searchButton.classList.add("search-button");
-// searchButton.style.width = "40px";
-// searchButton.style.height = "40px";
-// searchButton.style.marginLeft = "10px";
-// searchButton.style.cursor = "pointer";
-// searchButton.style.borderRadius = "8px";
-// searchButton.style.backgroundColor = "transparent";
-// searchButton.style.color = "#FFFFFF";
-
-// catalog.appendChild(searchDiv);
-// searchDiv.appendChild(input);
-// searchDiv.appendChild(searchButton);
-
-/* ****************************************************************/
   axios
     .get(`${url}/movie/popular?api_key=${apiKey}&language=tr-TR`)
     .then((response) => {
@@ -169,9 +92,3 @@ function getStars(voteAverage) {
   }
 
 
-// document.getElementById("search-btn").addEventListener("click", function () {
-//   const film = document.getElementById("film-select").value;
-//   const year = document.getElementById("year-select").value;
-//   console.log("Film:", film);
-//   console.log("Year:", year);
-// });
