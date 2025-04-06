@@ -135,7 +135,7 @@ option {
   color: white;
 }
 
-/* Tablet görünümü (max-width: 768px) */
+/* Tablet görünümü (min-width: 768px) */
 @media (min-width: 768px) {
   .container {
     width: auto;

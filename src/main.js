@@ -1,6 +1,6 @@
 
 //NUR'UN KODLARI
-import { getMovies } from "./js/nur-emre.js";
+import { getMovies } from "./js/nur.js";
 getMovies();
 import { catalogFun } from "./js/catalog.js";
 catalogFun();
