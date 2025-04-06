@@ -5,8 +5,8 @@
   padding: 8px 20px 8px 20px;
   height: 48px;
   display: flex;
-  
- 
+
+
 }
 
 .container {
@@ -198,23 +198,26 @@
 
 }
 
-.mobile-menu__container .nav-list  .nav-list__item a:hover  {
+.mobile-menu__container .nav-list .nav-list__item a:hover {
   color: #f5a623;
   /* text-decoration: none; */
   /* color: inherit; */
 }
-.mobile-menu__container .nav-list .nav-list__item a{
+
+.mobile-menu__container .nav-list .nav-list__item a {
   color: black;
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
 }
+
 body.dark-theme .mobile-menu__container .nav-list .nav-list__item a {
   color: white;
   /* text-decoration: none; */
   /* color: inherit; */
 }
+
 .nav-bar {
   display: flex;
   flex-direction: column;
@@ -228,18 +231,21 @@ body.dark-theme .mobile-menu__container .nav-list .nav-list__item a {
 .nav-list__ a:hover {
   color: #f5a623;
 }
+
 .nav-link {
   color: white;
   text-decoration: none;
 }
 
 .nav-link.active {
-  color: #f5a623; /* turuncu */
+  color: #f5a623;
+  /* turuncu */
 }
 
 .dark-theme .nav-link.active {
-  color: #f5a623; /* turuncu */
-} 
+  color: #f5a623;
+  /* turuncu */
+}
 
 /* Backdrop */
 .backdrop {
@@ -282,8 +288,9 @@ body.dark-theme .header__menu-button {
   color: #595959;
   background-color: transparent;
 }
+
 body:not(.dark-theme) .header__menu-button {
-color: #595959;
+  color: #595959;
   background-color: transparent;
 }
 
@@ -295,6 +302,7 @@ body.dark-theme .header__menu-button:hover {
 .dark-theme .nav-list a {
   color: #595959;
 }
+
 /* body:not(.dark-theme) .nav-list a {
 color: #595959;
   
@@ -303,10 +311,12 @@ color: #595959;
 .dark-theme .header__theme-switcher {
   background: linear-gradient(141.22deg, rgba(100, 100, 100, 0.68) 91.91%);
 }
+
 body.dark-theme .logo-text {
   color: #ffffff;
   /* Beyaz renk */
 }
+
 button,
 a {
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -349,7 +359,7 @@ a {
   .logo-img {
     width: 48px;
     height: 48px;
-    
+
   }
 
   .logo-text {
@@ -366,7 +376,7 @@ a {
   .logo-link {
     display: flex;
   }
-  
+
 
   .header__menu-button {
     display: none;
@@ -389,6 +399,7 @@ a {
   .nav-list {
     display: flex !important;
   }
+
   .nav-list__item a:hover {
     color: #f5a623;
   }
@@ -425,12 +436,12 @@ a {
     width: 11px;
     height: 11px;
   }
- 
+
 }
 
 /* === Desktop (min-width: 1024px) === */
 @media screen and (min-width: 1024px) {
-.site-header {
+  .site-header {
     display: flex;
     justify-content: center;
     /* Yatayda ortalar */
@@ -447,6 +458,7 @@ a {
     margin-right: auto;
     /* Sağ boşluk bırakır */
   }
+
   .logo {
     gap: 8px;
     width: 170px;
@@ -457,6 +469,7 @@ a {
     width: 45px;
     height: 38px;
   }
+
   .logo-text {
     display: flex;
     font-weight: 400;
@@ -467,10 +480,11 @@ a {
     margin-left: 8px;
     justify-content: center;
   }
+
   .nav-bar {
     display: flex !important;
     margin: 0 auto;
-      width: fit-content;
+    width: fit-content;
   }
 
   .nav-list {
@@ -481,7 +495,7 @@ a {
   }
 
   .header__theme-switcher {
-    width: 60px; 
+    width: 60px;
     height: 24px;
     margin-left: 417px;
   }
@@ -496,5 +510,5 @@ a {
     width: 13px;
     height: 13px;
   }
-    
+
 }
