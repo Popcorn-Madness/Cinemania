@@ -9,29 +9,9 @@ body {
   gap: 10px;
   margin-bottom: 20px;
   align-items: center;
-  justify-content: space-between;
 }
-
-.stars {
-  position: absolute;
-  right: 0;
-  bottom: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  gap: 4px;
-  width: 14px;
-  height: 14px;
-}
-.movie-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 280px;
-  height: auto;
-  overflow: hidden;
-  margin-bottom: 16px;
+select, button {
+  padding: 10px;
   border-radius: 5px;
   border: none;
 }
@@ -53,29 +33,12 @@ button {
 .movie img {
   width: 100%;
   border-radius: 8px;
-  font-size: 14px;
 }
-option {
-  background-color: #111;
-  color: white;
+.movie h3 {
+  margin: 10px 0 5px;
+  font-size: 16px;
 }
-
-/* Tablet görünümü (max-width: 768px) */
-@media (min-width: 768px) {
-  .movie-card {
-    width: auto;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .weekly-see {
-    width: 100%;
-  }
-  .see {
-    font-size: 24px;
-  }
 .movie p {
   font-size: 13px;
   color: #ccc;
-  }
+}
