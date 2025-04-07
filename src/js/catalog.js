@@ -1,14 +1,21 @@
 import axios from "axios";
+import { initializePopup } from "./moviePopup.js";
+
 let apiKey = "6c6ff1eefb34466f1e524e319f306b8f";
 let url = "https://api.themoviedb.org/3";
 // Sayfa bilgileri
 let currentPage = 1; // Başlangıç sayfası
 let totalPages = 1; // Toplam sayfa sayısı
 let pageGroupStart = 1; // Grupların başlangıcı (ilk grup 1-5)
+
 window.onload = function () {
+  // Initialize popup functionality
+  initializePopup();
+
   catalogFun(currentPage); // İlk sayfayı yükle
   initializeSearch(); // Arama fonksiyonunu başlat
 };
+
 // Film kataloğunu al ve sayfalama butonlarını oluştur
 export async function catalogFun(page = 1, query = "") {
   let catalog = document.querySelector(".catalog");
@@ -32,10 +39,13 @@ export async function catalogFun(page = 1, query = "") {
       movies.forEach((movie) => {
         let movieDiv = document.createElement("div");
         movieDiv.classList.add("movie-card");
+        // Add data attribute for movie ID - this is crucial for the popup
+        movieDiv.dataset.movieId = movie.id;
+        movieDiv.style.cursor = "pointer"; // Add pointer cursor to indicate clickable
         movieDiv.innerHTML = `
           <div class="image-container">
             <img src="https://image.tmdb.org/t/p/w500${
-              movie.poster_path
+              movie.poster_path || ""
             }" alt="${movie.title}" width="280" height="406">
           </div>
           <div class="movie-details">
