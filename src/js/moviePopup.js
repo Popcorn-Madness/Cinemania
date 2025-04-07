@@ -45,6 +45,17 @@ export function initializePopup() {
     }
   });
 
+  // Add keyboard event listener for ESC key
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      const popupContainer = document.getElementById("movie-popup-container");
+      if (popupContainer && popupContainer.style.display === "block") {
+        console.log("ESC key pressed, closing popup");
+        popupContainer.style.display = "none";
+      }
+    }
+  });
+
   console.log("Event delegation set up for movie cards");
 }
 
