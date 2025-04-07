@@ -1,4 +1,24 @@
 import axios from "axios";
+import { initializePopup } from "./moviePopup.js";
+
+// Call initializePopup in a place where it will run once,
+// even if getMovies() is called multiple times
+(function () {
+  // Check if we're in the browser environment
+  if (typeof window !== "undefined") {
+    // If the document is already loaded, initialize popup
+    if (
+      document.readyState === "complete" ||
+      document.readyState === "interactive"
+    ) {
+      initializePopup();
+    } else {
+      // Otherwise wait for the DOM to be ready
+      document.addEventListener("DOMContentLoaded", initializePopup);
+    }
+  }
+})();
+
 export async function getMovies() {
   const apiKey = "6c6ff1eefb34466f1e524e319f306b8f";
   const url = "https://api.themoviedb.org/3";
@@ -19,10 +39,13 @@ export async function getMovies() {
         if (imgContainer) {
           const movieDiv = document.createElement("div");
           movieDiv.classList.add("movie-card");
+          // Add data attribute for movie ID - crucial for the popup
+          movieDiv.dataset.movieId = movie.id;
+          movieDiv.style.cursor = "pointer"; // Add pointer cursor to indicate clickable
           movieDiv.innerHTML = `
             <div class="image-container">
               <img src="https://image.tmdb.org/t/p/w500${
-                movie.poster_path
+                movie.poster_path || ""
               }" alt="${movie.title}" width="280" height="406">
             </div>
             <div class="movie-details">
