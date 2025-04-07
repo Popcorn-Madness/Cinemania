@@ -120,20 +120,34 @@
   left: 0;
   width: 16px;
   height: 16px;
-  background-color: white;
+  background-image: url(../img/balll.svg);
+  background-size: contain;
+    background-repeat: no-repeat;
+      background-position: center;
   border-radius: 50%;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), rotate 0.25s ease;
+    /* Dönüş için transition ekledik */
+  
 }
+
 
 
 /* Ball sağa hareket ettiğinde */
 .header__theme-switcher.dark-mode #icon-ball {
   transform: translateX(40px);
 }
-
+.header__theme-switcher.dark-mode #icon-ball {
+  transform: translateX(40px) rotate(180deg);
+  /* Sağ hareket ederken aynı zamanda 180 derece döner */
+}
 .header__theme-switcher.dark-mode #icon-moon {
   opacity: 1;
   /* Moon iconunu gizliyoruz */
+}
+/* Ball sola hareket ettiğinde */
+.header__theme-switcher.light-mode #icon-ball {
+  transform: translateX(0) rotate(0deg);
+  /* Sola hareket ederken dönüş sıfırlanır */
 }
 
 .header__theme-switcher.dark-mode #icon-sun {
