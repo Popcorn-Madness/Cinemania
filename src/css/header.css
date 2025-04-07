@@ -2,11 +2,19 @@
 .site-header {
   justify-content: space-between;
   align-items: center;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 8px 20px 8px 20px;
+  height: 48px;
   display: flex;
 }
- 
+
+.container {
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .logo {
   outline: none;
   text-decoration: none;
@@ -24,11 +32,11 @@
 
 .header__menu-button {
   text-transform: uppercase;
-  /* color: var(--muted-text-clr); */
   background-color: rgba(0, 0, 0, 0);
   font-size: 12px;
   font-weight: 500;
-  line-height: 1.16;
+  line-height: 100%;
+  font-family: "Roboto", sans-serif;
   display: block;
   cursor: pointer;
   border-width: initial;
@@ -37,6 +45,8 @@
   border-image: initial;
   outline: none;
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 auto;
+  width: fit-content;
 }
 
 .nav-bar .nav-list {
@@ -50,19 +60,22 @@
   align-items: center;
   display: flex;
   position: relative;
-  background: linear-gradient(141.22deg, rgb(248, 65, 25) 9.4%, rgba(248, 159, 25, 0.68) 91.91%);
+  background: linear-gradient(
+    141.22deg,
+    rgb(248, 65, 25) 9.4%,
+    rgba(248, 159, 25, 0.68) 91.91%
+  );
   border-radius: 194px;
   gap: 14px;
   padding: 5px;
+  margin-right: 20px;
 }
 
 .header__theme-switcher::before {
-  content: "";
   z-index: 2;
-  width: 12px;
-  height: 12px;
+  width: 60px;
+  height: 24px;
   transform: translateX(var(--switcher-pos-mob));
-  /* Butonun konumunu buradan kontrol ediyoruz */
   background-color: rgb(255, 255, 255);
   position: absolute;
   top: 12%;
@@ -73,18 +86,433 @@
 #icon-moon,
 #icon-sun {
   width: 8px;
-  height: 8px;
+  height: 16px;
+  position: absolute;
+  transition: opacity 0.25s ease;
+}
+
+#icon-moon {
+  background-image: url("../img/night-mode.svg");
+  left: 6px;
+  padding-left: 2.94px;
+  padding-top: 3.75px;
+  width: 9.53px;
+  height: 9.75px;
+  opacity: 1;
+  /* Başlangıçta moon iconunu görünür yapıyoruz */
+}
+
+#icon-sun {
+  background-image: url("../img/sunMod.svg");
+  right: 6px;
+  opacity: 0;
+  /* padding-left: 143.11px; */
+  padding-right: 4.63px;
+  padding-top: 4.5px;
+  width: 9.26px;
+  height: 9px;
+  /* Başlangıçta sun iconunu gizliyoruz */
+}
+
+#icon-ball {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ball sağa hareket ettiğinde */
+.header__theme-switcher.dark-mode #icon-ball {
+  transform: translateX(40px);
+}
+
+.header__theme-switcher.dark-mode #icon-moon {
+  opacity: 1;
+  /* Moon iconunu gizliyoruz */
+}
+
+.header__theme-switcher.dark-mode #icon-sun {
+  opacity: 0;
+  /* Sun iconunu görünür yapıyoruz */
+}
+
+/* Ball sola hareket ettiğinde */
+.header__theme-switcher.light-mode #icon-ball {
+  transform: translateX(0);
+}
+
+.header__theme-switcher.light-mode #icon-moon {
+  opacity: 0;
+  /* Moon iconunu görünür yapıyoruz */
+}
+
+.header__theme-switcher.light-mode #icon-sun {
+  opacity: 1;
+  /* Sun iconunu gizliyoruz */
+}
+
+/* Mobile Menu */
+.header__menu-button {
+  background-color: transparent;
+  /* z-index: 1000; */
+  /* Menü butonunu üstte tutarak tıklanabilir yapıyoruz */
+  position: relative;
+  /* Butonun doğru şekilde yerleşmesi için */
+}
+
+.mobile-menu__container .mobile-menu__logo-img {
+  margin-left: 30px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.mobile-menu__container {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  /* Menü başlangıçta sağdan gizli */
+  width: 250px;
+  height: 100vh;
+  background: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out;
+  z-index: 999;
+  /* Menüye yüksek z-index değeri vererek üstte görünmesini sağlıyoruz */
+}
+
+.mobile-menu__container.open {
+  left: 0;
+  /* Sağdan açılmasını sağlıyoruz */
+}
+
+.mobile-menu__container.open .nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-left: 30px;
+}
+
+.mobile-menu__container .nav-list .nav-list__item a:hover {
+  color: #f5a623;
+  /* text-decoration: none; */
+  /* color: inherit; */
+}
+
+.mobile-menu__container .nav-list .nav-list__item a {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+}
+
+body.dark-theme .mobile-menu__container .nav-list .nav-list__item a {
+  color: white;
+  /* text-decoration: none; */
+  /* color: inherit; */
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.nav-list {
+  list-style: none;
+}
+
+.nav-list__ a:hover {
+  color: #f5a623;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link.active {
+  color: #f5a623;
+  /* turuncu */
+}
+
+.dark-theme .nav-link.active {
+  color: #f5a623;
+  /* turuncu */
+}
+
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 998;
+  /* Backdrop'u menünün altına yerleştiriyoruz */
+}
+
+.backdrop.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* === Theme Switch === */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-list a {
+  color: #595959;
+  transition: color 0.3s ease;
+}
+
+body.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-theme .header__menu-button {
+  color: #595959;
+  background-color: transparent;
+}
+
+body:not(.dark-theme) .header__menu-button {
+  color: #595959;
+  background-color: transparent;
+}
+
+body.dark-theme .header__menu-button:hover {
+  color: #f5a623;
+  background-color: transparent;
+}
+
+.dark-theme .nav-list a {
+  color: #595959;
+}
+
+/* body:not(.dark-theme) .nav-list a {
+color: #595959;
+  
+} */
+
+.dark-theme .header__theme-switcher {
+  background: linear-gradient(141.22deg, rgba(100, 100, 100, 0.68) 91.91%);
+}
+
+body.dark-theme .logo-text {
+  color: #ffffff;
+  /* Beyaz renk */
+}
+
+button,
+a {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-theme .mobile-menu__container {
+  background-color: #121212;
+  /* Arka planı koyu yap */
+}
+
+.dark-theme button {
+  color: #fff;
+}
+
+.dark-theme a {
+  color: #f5a623;
+}
+
+/* === Tablet (min-width: 768px) === */
+@media screen and (min-width: 768px) {
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    height: 60px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    gap: 8px;
+  }
+
+  .logo-img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .logo-text {
+    display: flex;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.16;
+    align-items: center;
+    margin: 0;
+    margin-left: 8px;
+    justify-content: center;
+  }
+
+  .logo-link {
+    display: flex;
+  }
+
+  .header__menu-button {
+    display: none;
+  }
+
+  .mobile-menu__container {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: 32px;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 246px;
+  }
+
+  .nav-list {
+    display: flex !important;
+  }
+
+  .nav-list__item a:hover {
+    color: #f5a623;
+  }
+
+  .nav-bar {
+    display: flex !important;
+    justify-content: space-around;
+    margin: auto;
+    gap: 32px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.14;
+    margin-left: 59px;
+    margin: 0 auto;
+    width: fit-content;
+  }
+
+  .header__theme-switcher {
+    width: 60px;
+    height: 24px;
+    margin-left: auto;
+    gap: 24px;
+    margin-right: 32px;
+  }
+
+  .header__theme-switcher::before {
+    width: 16px;
+    height: 16px;
+  }
+
+  #icon-moon,
+  #icon-sun {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+/* === Desktop (min-width: 1024px) === */
+@media screen and (min-width: 1024px) {
+  .site-header {
+    display: flex;
+    justify-content: center;
+    /* Yatayda ortalar */
+    align-items: center;
+    /* Dikeyde ortalar */
+    height: 60px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    max-width: 1280px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-left: auto;
+    /* Sol boşluk bırakır */
+    margin-right: auto;
+    /* Sağ boşluk bırakır */
+  }
+
+  .logo {
+    gap: 8px;
+    width: 170px;
+    height: 48px;
+  }
+
+  .logo-img {
+    width: 45px;
+    height: 38px;
+  }
+
+  .logo-text {
+    display: flex;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+    align-items: center;
+    margin: 0;
+    margin-left: 8px;
+    justify-content: center;
+  }
+
+  .nav-bar {
+    display: flex !important;
+    margin: 0 auto;
+    width: fit-content;
+  }
+
+  .nav-list {
+    display: flex !important;
+    margin-left: 307px;
+    width: 262px;
+    height: 16px;
+  }
+
+  .header__theme-switcher {
+    width: 60px;
+    height: 24px;
+    margin-left: 417px;
+  }
+
+  .header__theme-switcher::before {
+    width: 18px;
+    height: 18px;
+  }
+
+  #icon-moon,
+  #icon-sun {
+    width: 13px;
+    height: 13px;
+  }
 }
 
 /* Arka plana simge ekleme */
 #icon-moon {
-  background-image: url('/src/img/night-mode.svg');
+  background-image: url("/src/img/night-mode.svg");
   width: 16px;
   height: 16px;
 }
 
 #icon-sun {
-  background-image: url('/src/img/sunMod.svg');
+  background-image: url("/src/img/sunMod.svg");
   width: 16px;
   height: 16px;
 }
@@ -94,7 +522,8 @@
   z-index: 2;
   width: 10px;
   height: 10px;
-  transform: translateX(var(--switcher-bow-pos-mob)) rotate(var(--switcher-bow-rotaion));
+  transform: translateX(var(--switcher-bow-pos-mob))
+    rotate(var(--switcher-bow-rotaion));
   /* Tema butonunun ok işaretinin konumunu buradan kontrol edebilirsiniz */
   background-color: rgba(0, 0, 0, 0);
   position: absolute;
@@ -193,7 +622,11 @@ body.dark-theme {
 }
 
 .dark-theme .header__theme-switcher {
-  background: linear-gradient(141.22deg, rgb(55, 55, 55) 9.4%, rgba(100, 100, 100, 0.68) 91.91%);
+  background: linear-gradient(
+    141.22deg,
+    rgb(55, 55, 55) 9.4%,
+    rgba(100, 100, 100, 0.68) 91.91%
+  );
 }
 
 button,
@@ -265,9 +698,9 @@ a {
     margin: 0;
   }
 
-     .nav-list {
-       display: flex !important;
-     }
+  .nav-list {
+    display: flex !important;
+  }
   .nav-bar {
     display: flex !important;
     justify-content: space-around;

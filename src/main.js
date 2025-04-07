@@ -1,6 +1,11 @@
+import { getMovies } from "./js/weeklyTrends";
+import { catalogFun } from "./js/catalog";
+import { hero } from "./js/hero";
+import { upComing } from "./js/upComing";
+import { header } from "./js/header";
 
-//NUR'UN KODLARI
-import { getMovies } from "./js/nur.js";
+hero();
 getMovies();
-import { catalogFun } from "./js/catalog.js";
 catalogFun();
+upComing();
+header();

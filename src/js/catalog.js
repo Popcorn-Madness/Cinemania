@@ -1,4 +1,5 @@
 import axios from "axios";
+<<<<<<< HEAD
 
 let apiKey = "6c6ff1eefb34466f1e524e319f306b8f";
 let url = "https://api.themoviedb.org/3";
@@ -113,6 +114,46 @@ function createPaginationButtons(query = "") {
   }
 }
 
+=======
+export function catalogFun() {
+  let apiKey = "6c6ff1eefb34466f1e524e319f306b8f";
+  let url = "https://api.themoviedb.org/3";
+  window.onload = function () {
+    let catalog = document.querySelector(".catalog");
+    catalog.innerHTML = "";
+    axios
+      .get(`${url}/movie/popular?api_key=${apiKey}&language=tr-TR`)
+      .then((response) => {
+        console.log("Veri:", response.data);
+        let movies = response.data.results;
+        let catalog = document.querySelector(".catalog");
+        movies.forEach((movie) => {
+          let movieDiv = document.createElement("div");
+          movieDiv.classList.add("movie-card");
+          movieDiv.innerHTML = `
+      <div class="image-container">
+          <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${
+            movie.title
+          }" width="280" height="406">
+      </div>
+      <div class="movie-details">
+      <div class="movie-name">
+       <h3>${movie.title}</h3>
+          <p>${getGenres(movie.genre_ids).join(", ")}</p></div>
+          <div class="stars">
+              ${getStars(movie.vote_average)}
+          </div>
+      </div>
+  `;
+          catalog.appendChild(movieDiv);
+        });
+      })
+      .catch((error) => {
+        console.error("Hata:", error);
+      });
+  };
+}
+>>>>>>> ozge
 // Yıldızları oluşturmak için fonksiyon
 function getStars(voteAverage) {
   let stars = "";
@@ -126,7 +167,10 @@ function getStars(voteAverage) {
   }
   return stars;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> ozge
 // Türleri almak için (Türler film API'sinde ID ile gelir)
 function getGenres(genreIds) {
   const genresList = [
@@ -150,12 +194,16 @@ function getGenres(genreIds) {
     { id: 10752, name: "Savaş" },
     { id: 37, name: "Western" },
   ];
+<<<<<<< HEAD
 
+=======
+>>>>>>> ozge
   return genreIds.map((id) => {
     const genre = genresList.find((g) => g.id === id);
     return genre ? genre.name : "Bilinmiyor";
   });
 }
+<<<<<<< HEAD
 
 // Arama işlevini başlatan fonksiyon
 function initializeSearch() {
@@ -179,3 +227,5 @@ function initializeSearch() {
     }
   });
 }
+=======
+>>>>>>> ozge
