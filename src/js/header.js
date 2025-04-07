@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
   const menuButton = document.querySelector("[data-menu-open]");
   const menuContainer = document.getElementById("mobile-menu__container");
@@ -79,3 +80,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+

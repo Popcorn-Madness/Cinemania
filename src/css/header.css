@@ -125,7 +125,7 @@
     background-repeat: no-repeat;
       background-position: center;
   border-radius: 50%;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), rotate 0.25s ease;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
     /* Dönüş için transition ekledik */
   
 }
