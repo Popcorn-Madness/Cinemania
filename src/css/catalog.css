@@ -60,14 +60,10 @@ button {
   width: 95px;
   height: 48px;
 }
-<<<<<<< HEAD #year-select {
+#year-select {
   display: none;
 }
-
-======= #year-select {
-  display: none;
-}
->>>>>>>ozge .stars {
+.stars {
   position: absolute;
   right: 0;
   bottom: 5px;
@@ -78,10 +74,9 @@ button {
   width: 14px;
   height: 14px;
 }
-<<<<<<< HEAD .checked {
+.checked {
   color: #f87719;
 }
-
 .no-results {
   display: flex;
   flex-direction: column;
@@ -93,13 +88,12 @@ button {
   font-size: 20px;
   color: White;
 }
-
 .pagination {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  margin-right: 60px;
 }
-
 .pagination-button {
   margin: 0 5px;
   padding: 10px 15px; /* Yükseklik ve genişliği ayarlayarak yuvarlaklık sağlanır */
@@ -115,26 +109,31 @@ button {
   align-items: center;
   color: #b7b7b7;
 }
-
 .pagination-button:hover {
   background-color: #ddd;
 }
-
 .pagination-button.active {
   background-color: #f87719;
   color: white;
 }
-
-======= .checked {
-  color: #f87719;
-}
->>>>>>>ozge @media (min-width: 768px) {
+@media (min-width: 768px) {
   .search-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-right: 50px;
+  }
+  .no-results {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    font-size: 20px;
+    color: White;
   }
   .catalog {
     display: flex;
@@ -150,6 +149,7 @@ button {
     height: 44px;
   }
 }
+/*PAGİNATİON BÖLÜMÜ*/
 @media (min-width: 1280px) {
   .search-container {
     display: flex;

@@ -1,38 +1,31 @@
 import axios from "axios";
-<<<<<<< HEAD
-
 let apiKey = "6c6ff1eefb34466f1e524e319f306b8f";
 let url = "https://api.themoviedb.org/3";
-
 // Sayfa bilgileri
 let currentPage = 1; // Başlangıç sayfası
 let totalPages = 1; // Toplam sayfa sayısı
 let pageGroupStart = 1; // Grupların başlangıcı (ilk grup 1-5)
-
 window.onload = function () {
   catalogFun(currentPage); // İlk sayfayı yükle
   initializeSearch(); // Arama fonksiyonunu başlat
 };
-
 // Film kataloğunu al ve sayfalama butonlarını oluştur
 export async function catalogFun(page = 1, query = "") {
   let catalog = document.querySelector(".catalog");
   catalog.innerHTML = ""; // Önceden var olan içeriği temizle
-
   try {
     let endpoint = query
       ? `${url}/search/movie?api_key=${apiKey}&language=tr-TR&page=${page}&query=${query}`
       : `${url}/movie/popular?api_key=${apiKey}&language=tr-TR&page=${page}`;
-
     const response = await axios.get(endpoint);
     let movies = response.data.results;
     totalPages = response.data.total_pages; // Toplam sayfa sayısını al
-
     // Filmleri ekleyelim
     if (movies.length === 0) {
       catalog.innerHTML =
         "<div class='no-results'>" +
-        "<p>Oops...</p>"+" <p>We are sorry !</p>" +
+        "<p>Oops...</p>" +
+        " <p>We are sorry !</p>" +
         "<p>We don't have any results matching your search.</p>" +
         "</div>";
     } else {
@@ -58,19 +51,16 @@ export async function catalogFun(page = 1, query = "") {
         catalog.appendChild(movieDiv);
       });
     }
-
     // Sayfa butonlarını oluştur
     createPaginationButtons(query);
   } catch (error) {
     console.error("Hata:", error);
   }
 }
-
 // Sayfa butonlarını oluştur (3'lü gruplar halinde)
 function createPaginationButtons(query = "") {
   const paginationContainer = document.querySelector(".pagination");
   paginationContainer.innerHTML = ""; // Önceden var olan butonları temizle
-
   // Önceki grup butonunu ekle
   if (pageGroupStart > 1) {
     let prevGroupButton = document.createElement("button");
@@ -82,25 +72,20 @@ function createPaginationButtons(query = "") {
     });
     paginationContainer.appendChild(prevGroupButton);
   }
-
   // 3 sayfa numarasını grupla
   for (let i = pageGroupStart; i < pageGroupStart + 3 && i <= totalPages; i++) {
     let button = document.createElement("button");
     button.innerText = i;
     button.classList.add("pagination-button");
-
     if (i === currentPage) {
       button.classList.add("active");
     }
-
     button.addEventListener("click", () => {
       currentPage = i; // Yeni sayfa numarasını güncelle
       catalogFun(i, query); // Yeni sayfayı çek
     });
-
     paginationContainer.appendChild(button);
   }
-
   // Sonraki grup butonunu ekle
   if (pageGroupStart + 3 <= totalPages) {
     let nextGroupButton = document.createElement("button");
@@ -113,47 +98,6 @@ function createPaginationButtons(query = "") {
     paginationContainer.appendChild(nextGroupButton);
   }
 }
-
-=======
-export function catalogFun() {
-  let apiKey = "6c6ff1eefb34466f1e524e319f306b8f";
-  let url = "https://api.themoviedb.org/3";
-  window.onload = function () {
-    let catalog = document.querySelector(".catalog");
-    catalog.innerHTML = "";
-    axios
-      .get(`${url}/movie/popular?api_key=${apiKey}&language=tr-TR`)
-      .then((response) => {
-        console.log("Veri:", response.data);
-        let movies = response.data.results;
-        let catalog = document.querySelector(".catalog");
-        movies.forEach((movie) => {
-          let movieDiv = document.createElement("div");
-          movieDiv.classList.add("movie-card");
-          movieDiv.innerHTML = `
-      <div class="image-container">
-          <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${
-            movie.title
-          }" width="280" height="406">
-      </div>
-      <div class="movie-details">
-      <div class="movie-name">
-       <h3>${movie.title}</h3>
-          <p>${getGenres(movie.genre_ids).join(", ")}</p></div>
-          <div class="stars">
-              ${getStars(movie.vote_average)}
-          </div>
-      </div>
-  `;
-          catalog.appendChild(movieDiv);
-        });
-      })
-      .catch((error) => {
-        console.error("Hata:", error);
-      });
-  };
-}
->>>>>>> ozge
 // Yıldızları oluşturmak için fonksiyon
 function getStars(voteAverage) {
   let stars = "";
@@ -167,10 +111,6 @@ function getStars(voteAverage) {
   }
   return stars;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> ozge
 // Türleri almak için (Türler film API'sinde ID ile gelir)
 function getGenres(genreIds) {
   const genresList = [
@@ -194,22 +134,15 @@ function getGenres(genreIds) {
     { id: 10752, name: "Savaş" },
     { id: 37, name: "Western" },
   ];
-<<<<<<< HEAD
-
-=======
->>>>>>> ozge
   return genreIds.map((id) => {
     const genre = genresList.find((g) => g.id === id);
     return genre ? genre.name : "Bilinmiyor";
   });
 }
-<<<<<<< HEAD
-
 // Arama işlevini başlatan fonksiyon
 function initializeSearch() {
   const searchButton = document.getElementById("search-btn");
   const searchInput = document.getElementById("genre-select");
-
   searchButton.addEventListener("click", () => {
     const query = searchInput.value.trim();
     if (query) {
@@ -218,7 +151,6 @@ function initializeSearch() {
       catalogFun(1); // Arama yapılmazsa, popüler filmleri göster
     }
   });
-
   // Arama input'una her yazıldığında arama yapmak için
   searchInput.addEventListener("keyup", (event) => {
     const query = searchInput.value.trim();
@@ -227,5 +159,3 @@ function initializeSearch() {
     }
   });
 }
-=======
->>>>>>> ozge

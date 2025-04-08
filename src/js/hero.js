@@ -58,16 +58,34 @@ export function hero() {
 
     // Watch Trailer Button Click
     const watchTrailerButton = document.querySelector(".trailer");
-    watchTrailerButton.addEventListener("click", () => {
+    watchTrailerButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      // hideMovieDetails();
       getTrailer(movie.id);
     });
 
     // More Details Button Click
     const moreDetailsButton = document.querySelector(".detail");
-    moreDetailsButton.addEventListener("click", () => {
+    moreDetailsButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      // hideTrailer();
       showDetails(movie);
     });
   }
+
+  // function hideMovieDetails() {
+  //   Film detaylarını gizle
+  //   const heroContent = document.querySelector(".hero-content");
+  //   if (heroContent) {
+  //     heroContent.style.display = "none"; // Detayları gizle
+  //   }
+  // }
+
+  // function hideTrailer() {
+  //   // Fragmanı gizle
+  //   trailerContainer.style.display = "none"; // Trailer konteynerini gizle
+  //   trailerIframe.src = ""; // Video'yu durdur
+  // }
 
   function displayDefaultHero() {
     heroSection.innerHTML = `
@@ -105,7 +123,7 @@ export function hero() {
   function showDetails(movie) {
     const movieDescription = movie.overview || "No description available.";
     movieDescriptionElement.textContent = movieDescription;
-    movieTrailerLink.href = `https://www.youtube.com/watch?v=${movie.id}`; // Placeholder link for details, you might need a specific API endpoint.
+    // movieTrailerLink.href = `https://www.youtube.com/watch?v=${movie.id}`; // Placeholder link for details, you might need a specific API endpoint.
 
     modal.style.display = "block";
   }
